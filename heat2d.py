@@ -9,7 +9,6 @@ from scipy.sparse.linalg import cgs
 from scipy.sparse import csr_matrix
 
 fig = plt.figure()
-#ax = fig.add_subplot(111, projection='3d')
 
 t_min = 0.0
 t_max = 10.0
