@@ -65,7 +65,7 @@ u = np.zeros(m * m)
 
 for i in range(m):
     for j in range(m):
-        u_prev[(m - 1 - j) * m + i] = u_init(x_min + i * dx, y_min + j * dy)#u_init(x_min + i * dx, y_min + j * dy)
+        u_prev[(m - 1 - j) * m + i] = u_init(x_min + i * dx, y_min + j * dy)
         u[(m - 1 - j) * m + i] = u_init(x_min + i * dx, y_min + j * dy)
 
 for k in range(n):
@@ -94,19 +94,16 @@ for k in range(n):
     plt.clf()
     for i in range(m):
         for j in range(m):
-            # print "%d, %d", i, j
             str_num = i * m + j
             if i == 0 or i == m - 1:
                 data.append(1.0)
                 row.append(str_num)
                 col.append(ind(i, j))
-                # L[str_num][ind(i, j)] = 1.0
                 right[str_num] = x_0(j * dx)
             elif j == 0 or j == m - 1:
                 data.append(1.0)
                 row.append(str_num)
                 col.append(ind(i, j))
-                #L[str_num][ind(i, j)] = 1.0
                 right[str_num] = y_0(i * dy)
             else:
                 data.append(c / (dx**2))
@@ -132,7 +129,6 @@ for k in range(n):
                 right[str_num] = - u_prev[ind(i, j)] / dt
     L = csr_matrix((np.array(data), (np.array(row), np.array(col))), shape=(matr_size, matr_size))
     u, info = cgs(L, right, x0 = u_prev, tol=1e-10)
-    #print "residual: %le" % la.norm(np.dot(L, u) - right)
-    #print "norm u + u_prev = %le" % la.norm(u - u_prev)
+    # print "residual: %le" % la.norm(np.dot(L, u) - right)
+    # print "norm u + u_prev = %le" % la.norm(u - u_prev)
     u_prev = u
-    
