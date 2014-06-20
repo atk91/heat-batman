@@ -2,7 +2,6 @@
 
 import numpy as np
 import scipy.linalg as la
-from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 from scipy.sparse.linalg import cgs
 from scipy.sparse import csr_matrix
